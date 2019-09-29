@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="240.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.sanjeronimo.historiasclinicas.controllers.RegistrarController">
+   <children>
+      <VBox alignment="BASELINE_LEFT" prefHeight="152.0" prefWidth="300.0" spacing="30.0" AnchorPane.bottomAnchor="78.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <TextField focusTraversable="false" promptText="Cédula" />
+            <DatePicker focusTraversable="false" promptText="Fecha" />
+            <Button focusTraversable="false" mnemonicParsing="false" text="Seleccionar un archivo..." />
+         </children>
+      </VBox>
+      <HBox alignment="BOTTOM_RIGHT" layoutY="168.0" prefHeight="52.0" prefWidth="310.0" spacing="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="168.0">
+         <children>
+            <Button  onAction="#irAIndex" focusTraversable="false" mnemonicParsing="false" text="Cancelar" />
+             <Button defaultButton="true" focusTraversable="false" minWidth="60.0" mnemonicParsing="false" text="Guardar" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

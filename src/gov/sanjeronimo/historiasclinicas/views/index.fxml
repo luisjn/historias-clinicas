@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,14 +8,29 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane minHeight="480.0" minWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.sanjeronimo.historiasclinicas.views.IndexController">
-   <children>
-      <ImageView fitHeight="25.0" fitWidth="196.0" layoutX="11.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
-      <TextField focusTraversable="false" layoutX="218.0" layoutY="14.0" prefHeight="25.0" prefWidth="129.0" promptText="Cédula" />
-      <TextField focusTraversable="false" layoutX="358.0" layoutY="14.0" prefHeight="25.0" prefWidth="129.0" promptText="Fecha" />
-      <Button defaultButton="true" focusTraversable="false" layoutX="498.0" layoutY="14.0" minWidth="60.0" mnemonicParsing="false" onAction="#buscarHistoriaClinica" text="Buscar" />
-      <Button focusTraversable="false" layoutX="569.0" layoutY="14.0" minWidth="60.0" mnemonicParsing="false" onAction="#guardarHistoriaClinica" prefHeight="25.0" prefWidth="51.0" text="Guardar" />
-      <Label fx:id="mensaje" focusTraversable="false" layoutX="290.0" layoutY="50.0" prefHeight="25.0" prefWidth="60.0" GridPane.rowIndex="1" />
-      <ListView focusTraversable="false" layoutX="11.0" layoutY="87.0" prefHeight="385.0" prefWidth="618.0" />
-   </children>
-</AnchorPane>
+<BorderPane prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.sanjeronimo.historiasclinicas.controllers.IndexController">
+   <top>
+      <HBox alignment="CENTER" spacing="30.0">
+         <children>
+            <TextField focusTraversable="false" promptText="Cédula" />
+            <DatePicker focusTraversable="false" promptText="Fecha" />
+            <Button defaultButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#buscarHistoriaClinica" text="Buscar" />
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#irARegistrar" text="Registrar" />
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <center>
+      <ListView focusTraversable="false" prefHeight="432.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+         <contextMenu>
+            <ContextMenu>
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Ver" />
+               </items>
+            </ContextMenu>
+         </contextMenu>
+      </ListView>
+   </center>
+</BorderPane>
