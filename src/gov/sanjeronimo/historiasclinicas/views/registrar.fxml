@@ -17,7 +17,7 @@
       </VBox>
       <HBox alignment="BOTTOM_RIGHT" layoutY="168.0" prefHeight="52.0" prefWidth="310.0" spacing="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="168.0">
          <children>
-            <Button  onAction="#irAIndex" focusTraversable="false" mnemonicParsing="false" text="Cancelar" />
+            <Button  onAction="#buildView" focusTraversable="false" mnemonicParsing="false" text="Cancelar" />
              <Button defaultButton="true" focusTraversable="false" minWidth="60.0" mnemonicParsing="false" text="Guardar" />
          </children>
       </HBox>

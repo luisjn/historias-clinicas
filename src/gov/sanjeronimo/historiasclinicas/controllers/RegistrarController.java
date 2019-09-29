@@ -9,13 +9,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class RegistrarController {
-  public void irAIndex(ActionEvent actionEvent) throws IOException {
-    Parent loginParent = FXMLLoader.load(getClass().getResource("../views/index.fxml"));
-    Scene loginScene = new Scene(loginParent);
+public class RegistrarController extends ViewController {
+  public static final String INDEX_VIEW_PATH = "../views/index.fxml";
 
-    Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-    window.setScene(loginScene);
-    window.show();
+  @Override
+  public void buildView(ActionEvent actionEvent) throws IOException {
+    Parent registrarParent = FXMLLoader.load(getClass().getResource(INDEX_VIEW_PATH));
+    this.changeScene(registrarParent, actionEvent);
   }
 }

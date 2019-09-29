@@ -15,7 +15,7 @@
             <TextField focusTraversable="false" promptText="Cédula" />
             <DatePicker focusTraversable="false" promptText="Fecha" />
             <Button defaultButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#buscarHistoriaClinica" text="Buscar" />
-            <Button focusTraversable="false" mnemonicParsing="false" onAction="#irARegistrar" text="Registrar" />
+            <Button focusTraversable="false" mnemonicParsing="false" onAction="#buildView" text="Registrar" />
          </children>
          <BorderPane.margin>
             <Insets bottom="5.0" top="5.0" />

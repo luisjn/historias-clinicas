@@ -9,16 +9,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class IndexController {
+public class IndexController extends ViewController {
+  public static final String REGISTRAR_VIEW_PATH = "../views/registrar.fxml";
+
   public void buscarHistoriaClinica(ActionEvent actionEvent) {
   }
 
-  public void irARegistrar(ActionEvent actionEvent) throws IOException {
-    Parent loginParent = FXMLLoader.load(getClass().getResource("../views/registrar.fxml"));
-    Scene loginScene = new Scene(loginParent);
-
-    Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-    window.setScene(loginScene);
-    window.show();
+  @Override
+  public void buildView(ActionEvent actionEvent) throws IOException {
+    Parent registrarParent = FXMLLoader.load(getClass().getResource(REGISTRAR_VIEW_PATH));
+    this.changeScene(registrarParent, actionEvent);
   }
 }
