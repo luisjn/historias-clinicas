@@ -1,25 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="240.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.sanjeronimo.historiasclinicas.controllers.RegistrarController">
+<AnchorPane fx:id="anchorPane" prefHeight="240.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gov.sanjeronimo.historiasclinicas.controllers.RegistrarController">
    <children>
-      <VBox alignment="BASELINE_LEFT" prefHeight="152.0" prefWidth="300.0" spacing="30.0" AnchorPane.bottomAnchor="78.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <VBox alignment="BASELINE_LEFT" prefHeight="240.0" prefWidth="320.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField focusTraversable="false" promptText="Cédula" />
-            <DatePicker focusTraversable="false" promptText="Fecha" />
-            <Button focusTraversable="false" mnemonicParsing="false" text="Seleccionar un archivo..." />
+            <TextField fx:id="cedula" focusTraversable="false" prefHeight="25.0" prefWidth="275.0" promptText="Cédula">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="5.0" />
+               </VBox.margin></TextField>
+            <DatePicker fx:id="fecha" focusTraversable="false" promptText="Fecha">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin></DatePicker>
+            <HBox prefHeight="28.0" prefWidth="320.0" spacing="10.0">
+               <children>
+                  <Button focusTraversable="false" mnemonicParsing="false" onAction="#btnSeleccionar" text="Seleccionar un archivo...">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Label fx:id="fileName">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="50.0" prefWidth="310.0" spacing="20.0">
+               <children>
+                  <Button focusTraversable="false" mnemonicParsing="false" onAction="#buildView" text="Cancelar" />
+                  <Button defaultButton="true" focusTraversable="false" minWidth="60.0" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
+               </children>
+               <VBox.margin>
+                  <Insets right="10.0" />
+               </VBox.margin>
+            </HBox>
          </children>
       </VBox>
-      <HBox alignment="BOTTOM_RIGHT" layoutY="168.0" prefHeight="52.0" prefWidth="310.0" spacing="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="168.0">
-         <children>
-            <Button  onAction="#buildView" focusTraversable="false" mnemonicParsing="false" text="Cancelar" />
-             <Button defaultButton="true" focusTraversable="false" minWidth="60.0" mnemonicParsing="false" text="Guardar" />
-         </children>
-      </HBox>
    </children>
 </AnchorPane>
