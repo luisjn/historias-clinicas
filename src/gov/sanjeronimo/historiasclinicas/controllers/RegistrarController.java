@@ -33,11 +33,6 @@ public class RegistrarController extends ViewController {
     String dni = cedula.getText();
     LocalDate date = fecha.getValue();
     servicioHistoriaClinica.registrarHistoriaClinica(dni, date, file);
-    /*Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle("Guardar Historia");
-    alert.setHeaderText(null);
-    alert.setContentText("Se ha guardado correctamente");
-    alert.showAndWait();*/
     fileName.setText("");
     buildView(actionEvent);
   }

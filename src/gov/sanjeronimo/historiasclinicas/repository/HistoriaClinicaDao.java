@@ -22,9 +22,10 @@ public class HistoriaClinicaDao {
   }
 
   public void savePatient(String dni) {
-    String sql= "INSERT INTO patient(dni) VALUES ('" + dni + "')";
+    String sql= "INSERT INTO patient(dni) VALUES (?)";
     try {
       PreparedStatement query = conexionBD.getConnection().prepareStatement(sql);
+      query.setString(1, dni);
       query.executeQuery();
     } catch(Exception e) {
       System.out.println(e.getMessage());
@@ -57,18 +58,14 @@ public class HistoriaClinicaDao {
   }
 
   public List<HistoriaClinica> findAllByDni(String dni) {
-    String sql = "SELECT patient_dni, date, medical_history, file_name FROM medical_record WHERE patient_dni = '" + dni + "'";
+    String sql = "SELECT patient_dni, date, medical_history, file_name FROM medical_record WHERE patient_dni = ?";
     List<HistoriaClinica> historiasClinicas = new ArrayList();
     try {
       PreparedStatement query = conexionBD.getConnection().prepareStatement(sql);
+      query.setString(1, dni);
       ResultSet resultSet = query.executeQuery();
       while(resultSet.next()) {
-        HistoriaClinica historiaClinica = new HistoriaClinica();
-        historiaClinica.setDni(resultSet.getString("patient_dni"));
-        historiaClinica.setFecha(resultSet.getDate("date").toLocalDate());
-        historiaClinica.setFile(resultSet.getBytes("medical_history"));
-        historiaClinica.setFileName(resultSet.getString("file_name"));
-        historiasClinicas.add(historiaClinica);
+        historiasClinicas.add(setHistoriaClinica(resultSet));
       }
     } catch(Exception e) {
       System.out.println(e.getMessage());
@@ -77,37 +74,43 @@ public class HistoriaClinicaDao {
   }
 
   public List<HistoriaClinica> findAllByDniAndDate(String dni, LocalDate date) {
-    String sql = "SELECT patient_dni, date, medical_history, file_name FROM medical_record WHERE patient_dni = '" + dni + "' AND date = '" + date + "'";
-    List<HistoriaClinica> historiaClinicas = new ArrayList();
+    String sql = "SELECT patient_dni, date, medical_history, file_name FROM medical_record WHERE patient_dni = ? AND date = ?";
+    List<HistoriaClinica> historiasClinicas = new ArrayList();
     try {
       PreparedStatement query = conexionBD.getConnection().prepareStatement(sql);
+      query.setString(1, dni);
+      query.setDate(2, Date.valueOf(date));
       ResultSet resultSet = query.executeQuery();
       while(resultSet.next()) {
-        HistoriaClinica historiaClinica = new HistoriaClinica();
-        historiaClinica.setDni(resultSet.getString("patient_dni"));
-        historiaClinica.setFecha(resultSet.getDate("date").toLocalDate());
-        historiaClinica.setFile(resultSet.getBytes("medical_history"));
-        historiaClinica.setFileName(resultSet.getString("file_name"));
-        historiaClinicas.add(historiaClinica);
+        historiasClinicas.add(setHistoriaClinica(resultSet));
       }
     } catch(Exception e) {
       System.out.println(e.getMessage());
     }
-    return historiaClinicas;
+    return historiasClinicas;
   }
 
   public boolean existPatient(String dni) {
-    String sql= "SELECT * FROM patient WHERE dni ='" + dni + "'";
-    boolean exist = false;
+    String sql= "SELECT * FROM patient WHERE dni = ?";
     try {
       PreparedStatement query = conexionBD.getConnection().prepareStatement(sql);
+      query.setString(1, dni);
       ResultSet resultSet = query.executeQuery();
       if(resultSet.isBeforeFirst()) {
-        exist = true;
+        return true;
       }
     } catch(SQLException e){
       System.out.println(e.getMessage());
     }
-    return exist;
+    return false;
+  }
+
+  private HistoriaClinica setHistoriaClinica(ResultSet resultSet) throws SQLException {
+    HistoriaClinica historiaClinica = new HistoriaClinica();
+    historiaClinica.setDni(resultSet.getString("patient_dni"));
+    historiaClinica.setFecha(resultSet.getDate("date").toLocalDate());
+    historiaClinica.setFile(resultSet.getBytes("medical_history"));
+    historiaClinica.setFileName(resultSet.getString("file_name"));
+    return historiaClinica;
   }
 }

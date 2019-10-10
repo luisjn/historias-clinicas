@@ -54,7 +54,6 @@ public class IndexController extends ViewController {
       try {
         OutputStream outputStream = new FileOutputStream(file);
         outputStream.write(historiaClinica.getFile());
-        System.out.println("Write bytes to file.");
         outputStream.close();
         Desktop desktop = Desktop.getDesktop();
         if(file.exists()) desktop.open(file);
