@@ -12,7 +12,6 @@ public abstract class ViewController {
 
   public void changeScene(Parent parent, ActionEvent actionEvent) {
     Scene loginScene = new Scene(parent);
-
     Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
     window.setScene(loginScene);
     window.show();

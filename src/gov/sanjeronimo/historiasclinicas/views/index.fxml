@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -12,8 +8,8 @@
    <top>
       <HBox alignment="CENTER" spacing="30.0">
          <children>
-            <TextField focusTraversable="false" promptText="Cédula" />
-            <DatePicker focusTraversable="false" promptText="Fecha" />
+            <TextField fx:id="cedula" focusTraversable="false" promptText="Cédula" />
+            <DatePicker fx:id="fecha" focusTraversable="false" promptText="Fecha" />
             <Button defaultButton="true" focusTraversable="false" mnemonicParsing="false" onAction="#buscarHistoriaClinica" text="Buscar" />
             <Button focusTraversable="false" mnemonicParsing="false" onAction="#buildView" text="Registrar" />
          </children>
@@ -23,14 +19,7 @@
       </HBox>
    </top>
    <center>
-      <ListView focusTraversable="false" prefHeight="432.0" prefWidth="640.0" BorderPane.alignment="CENTER">
-         <contextMenu>
-            <ContextMenu>
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Ver" />
-               </items>
-            </ContextMenu>
-         </contextMenu>
+      <ListView fx:id="listView" focusTraversable="false" prefHeight="418.0" prefWidth="640.0" BorderPane.alignment="CENTER" onMouseClicked="#handleClick">
       </ListView>
    </center>
 </BorderPane>
